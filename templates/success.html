@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>Success Page</title>
+</head>
+<body>
+  <p1>The email address you entered {{emailed}}, is a VALID
+    email address! Thank you!
+  </p1>
+</body>
+<div class='container'>
+        <h1>Email Addresses Entered: </h1>
+        {% if list %}
+        <table>
+            {% for email in list %}
+            <tr>
+                <td>{{email_list['email']}}</td>
+                <td>{{email_list['created_at'].strftime('%Y/%m/%d %I:%M %p')}}</td>
+                <td class='remove'>
+                    <form action='/delete' method='POST'>
+                        <input type='hidden' name='hidden' value={{email['idemails']}} />
+                        <input type='submit' value='Delete'>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</html>
